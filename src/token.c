@@ -17,13 +17,13 @@ const KeyWord key_words[] = {
 
 size_t key_words_len = sizeof key_words / sizeof key_words[0];
 
-TokenT lookup(const char* value) {
+TokenT lookup(const char* value, size_t value_len) {
     size_t i;
     for (i = 0; i < key_words_len; ++i) {
         const KeyWord key_word = key_words[i];
         const char* word = key_word.key_word;
         size_t len = key_word.key_word_len;
-        if (memcmp(word, value, len) == 0) {
+        if ((len == value_len) && (memcmp(word, value, len) == 0)) {
             return key_word.type;
         }
     }

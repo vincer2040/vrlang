@@ -87,14 +87,16 @@ Token lexer_next_token(Lexer* l) {
         break;
     default:
         if (is_char(l->ch)) {
-            size_t end_pos, start_pos = l->pos - 1;
+            size_t end_pos, size, start_pos = l->pos - 1;
             const char* val = l->input + (l->pos - 1);
-            TokenT type = lookup(val);
+            TokenT type;
             lexer_read_ident(l);
-            end_pos = l->pos;
+            end_pos = l->pos - 1;
+            size = end_pos - start_pos;
+            type = lookup(val, size);
             if (type == Ident) {
                 size_t size = end_pos - start_pos;
-                vstr s = vstr_new_len(size);
+                vstr s = vstr_new_len(size + 1);
                 s = vstr_push_string_len(s, val, size);
                 tok.value = s;
             }
@@ -105,9 +107,9 @@ Token lexer_next_token(Lexer* l) {
             const char* val = l->input + start_pos;
             vstr s;
             lexer_read_int(l);
-            end_pos = l->pos;
+            end_pos = l->pos - 1;
             size = end_pos - start_pos;
-            s = vstr_new_len(size);
+            s = vstr_new_len(size + 1);
             s = vstr_push_string_len(s, val, size);
             tok.type = Int;
             tok.value = s;
