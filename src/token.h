@@ -39,7 +39,7 @@ typedef struct {
     vstr value;
 } Token;
 
-TokenT lookup(const char* value);
+TokenT lookup(const char* value, size_t value_len);
 void token_free(Token* tok);
 
 #endif /* __TOKEN_H__ */

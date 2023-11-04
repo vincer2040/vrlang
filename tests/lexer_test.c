@@ -15,7 +15,7 @@
             ck_assert_ptr_null(b.value);                                       \
         } else {                                                               \
             ck_assert_ptr_nonnull(b.value);                                    \
-            ck_assert_mem_eq(a.value, b.value, strlen(a.value));               \
+            ck_assert_str_eq(a.value, b.value);                                \
         }                                                                      \
     } while (0)
 
