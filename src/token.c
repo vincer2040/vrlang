@@ -1,5 +1,6 @@
 #include "token.h"
 #include "vstr.h"
+#include <assert.h>
 #include <memory.h>
 #include <stddef.h>
 
@@ -42,4 +43,65 @@ void token_free(Token* tok) {
     default:
         break;
     }
+}
+
+const char* token_str(TokenT t) {
+    switch (t) {
+    case Illegal:
+        return "Illegal";
+    case Eoft:
+        return "Eoft";
+    case Ident:
+        return "Ident";
+    case Int:
+        return "Int";
+    case Assign:
+        return "Assign";
+    case Plus:
+        return "Plus";
+    case Minus:
+        return "Minus";
+    case Slash:
+        return "Slash";
+    case Asterisk:
+        return "Asterisk";
+    case Bang:
+        return "Bang";
+    case Lt:
+        return "Lt";
+    case Gt:
+        return "Gt";
+    case Eq:
+        return "Eq";
+    case NotEq:
+        return "NotEq";
+    case Comma:
+        return "Comma";
+    case Semicolon:
+        return "Semicolon";
+    case LParen:
+        return "LParen";
+    case RParen:
+        return "RParen";
+    case LSquirly:
+        return "LSquirly";
+    case RSquirly:
+        return "RSquirly";
+    case Function:
+        return "Function";
+    case Let:
+        return "let";
+    case If:
+        return "if";
+    case Else:
+        return "else";
+    case Return:
+        return "return";
+    case True:
+        return "true";
+    case False:
+        return "false";
+    }
+
+    assert(0 && "unreachable");
 }

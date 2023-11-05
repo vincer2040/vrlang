@@ -41,5 +41,6 @@ typedef struct {
 
 TokenT lookup(const char* value, size_t value_len);
 void token_free(Token* tok);
+const char* token_str(TokenT t);
 
 #endif /* __TOKEN_H__ */
