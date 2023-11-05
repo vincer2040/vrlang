@@ -24,8 +24,25 @@ add_library(
     src/lexer.c
 )
 
+add_library(
+    ast
+    src/ast.c
+)
+
+add_library(
+    parser
+    src/parser.c
+)
+
 target_link_libraries(
     lexer
+    vstr
+)
+
+target_link_libraries(
+    parser
+    lexer
+    ast
     vstr
 )
 
