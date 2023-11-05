@@ -1,6 +1,5 @@
-#include <stdio.h>
+#include "repl.h"
 
 int main(void) {
-    printf("hello world\n");
-    return 0;
+    return repl();
 }

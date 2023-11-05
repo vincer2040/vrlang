@@ -34,6 +34,16 @@ add_library(
     src/parser.c
 )
 
+add_library(
+    util
+    src/util.c
+)
+
+add_library(
+    repl
+    src/repl.c
+)
+
 target_link_libraries(
     lexer
     vstr
@@ -46,6 +56,28 @@ target_link_libraries(
     vstr
 )
 
-add_executable(vrlang src/vrlang.c)
+target_link_libraries(
+    util
+    vstr
+)
+
+target_link_libraries(
+    repl
+    lexer
+    parser
+    ast
+    util
+    vstr
+)
+
+add_executable(
+    vrlang
+    src/vrlang.c
+)
+
+target_link_libraries(
+    vrlang
+    repl
+)
 
 install(FILES build/vrlang DESTINATION "${INSTALL_PREFIX}/bin")
