@@ -362,7 +362,14 @@ vstr program_string(Program* program) {
 
 void identifier_free(Identifier* ident) { vstr_delete(ident->value); }
 
-void let_statement_free(LetStatement* let) { vstr_delete(let->name.value); }
+void return_statement_free(ReturnStatement* ret) {
+    expression_free(&(ret->value));
+}
+
+void let_statement_free(LetStatement* let) {
+    vstr_delete(let->name.value);
+    expression_free(&(let->value));
+}
 
 void integer_literal_free(IntegerLiteral* integer) {
     vstr_delete(integer->tok.value);
@@ -465,6 +472,9 @@ void statement_free(Statement* stmt) {
     switch (stmt->type) {
     case ST_Let:
         let_statement_free(&(stmt->data.let));
+        break;
+    case ST_Return:
+        return_statement_free(&(stmt->data.ret));
         break;
     case ST_Expression:
         expression_statement_free(&(stmt->data.es));
