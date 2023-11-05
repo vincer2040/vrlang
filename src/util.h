@@ -2,9 +2,7 @@
 
 #define __UTIL_H__
 
-#define PROGRAM_INITIAL_CAP 32
-
-#define PARSER_ERRORS_INITIAL_CAP 32
+#define INITIAL_CAP 32
 
 #define UNUSED(v) ((void)v)
 

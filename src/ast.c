@@ -11,34 +11,34 @@ void statement_free(Statement* stmt);
 
 StatementVec* stmt_vec_init(void) {
     StatementVec* p;
-    size_t needed = (sizeof *p) + (sizeof(Statement) * PROGRAM_INITIAL_CAP);
+    size_t needed = (sizeof *p) + (sizeof(Statement) * INITIAL_CAP);
     p = malloc(needed);
     assert(p != NULL);
     memset(p, 0, needed);
     p->len = 0;
-    p->cap = PROGRAM_INITIAL_CAP;
+    p->cap = INITIAL_CAP;
     return p;
 }
 
 IdentifierVec* ident_vec_init(void) {
     IdentifierVec* vec;
-    size_t needed = (sizeof *vec) + (sizeof(Identifier) * PROGRAM_INITIAL_CAP);
+    size_t needed = (sizeof *vec) + (sizeof(Identifier) * INITIAL_CAP);
     vec = malloc(needed);
     assert(vec != NULL);
     memset(vec, 0, needed);
     vec->len = 0;
-    vec->cap = PROGRAM_INITIAL_CAP;
+    vec->cap = INITIAL_CAP;
     return vec;
 }
 
 ExpressionVec* exp_vec_init(void) {
     ExpressionVec* vec;
-    size_t needed = (sizeof *vec) + (sizeof(Expression) * PROGRAM_INITIAL_CAP);
+    size_t needed = (sizeof *vec) + (sizeof(Expression) * INITIAL_CAP);
     vec = malloc(needed);
     assert(vec != NULL);
     memset(vec, 0, needed);
     vec->len = 0;
-    vec->cap = PROGRAM_INITIAL_CAP;
+    vec->cap = INITIAL_CAP;
     return vec;
 }
 

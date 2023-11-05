@@ -564,9 +564,9 @@ static int no_prefix_parse_method(Parser* p, TokenT type) {
 
 static ParserErrors parser_errors_init(void) {
     ParserErrors errs = {0};
-    errs.errors = calloc(PARSER_ERRORS_INITIAL_CAP, sizeof(vstr));
+    errs.errors = calloc(INITIAL_CAP, sizeof(vstr));
     assert(errs.errors != NULL);
-    errs.cap = PARSER_ERRORS_INITIAL_CAP;
+    errs.cap = INITIAL_CAP;
     return errs;
 }
 
