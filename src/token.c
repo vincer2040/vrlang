@@ -1,4 +1,5 @@
 #include "token.h"
+#include "util.h"
 #include "vstr.h"
 #include <assert.h>
 #include <memory.h>
@@ -103,5 +104,5 @@ const char* token_str(TokenT t) {
         return "false";
     }
 
-    assert(0 && "unreachable");
+    unreachable;
 }

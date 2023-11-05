@@ -1,17 +1,9 @@
 #include "ast.h"
+#include "util.h"
 #include "vstr.h"
 #include <assert.h>
 #include <memory.h>
 #include <stdlib.h>
-
-#define PROGRAM_INITIAL_CAP 32
-
-#define UNUSED(v) ((void)v)
-
-#define unreachable                                                            \
-    do {                                                                       \
-        assert(0 && "unreachable");                                            \
-    } while (0)
 
 vstr expression_string(Expression* e);
 vstr statement_string(Statement* stmt);

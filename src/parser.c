@@ -1,18 +1,12 @@
 #include "parser.h"
 #include "ast.h"
 #include "token.h"
+#include "util.h"
 #include "vstr.h"
 #include <assert.h>
 #include <memory.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#define PARSER_ERRORS_INITIAL_CAP 32
-
-#define unreachable                                                            \
-    do {                                                                       \
-        assert(0 && "unreachable");                                            \
-    } while (0)
 
 typedef enum {
     Lowest = 0,
